@@ -29,7 +29,12 @@ extension Theme where Site == MyWebsite {
     }
 }
 
-try MyWebsite().publish(withTheme: .MyWebsiteTheme)
+try MyWebsite().publish(using: [
+    .copyResources(),
+    .generateHTML(withTheme: .MyWebsiteTheme),
+    .generateSiteMap(),
+    .deploy(using: .gitHub("joshprewer.github.io", useSSH: true))
+])
 
 private struct MyWebsiteHTMLFactory<Site: Website>: HTMLFactory {
     func makeIndexHTML(for index: Index, context: PublishingContext<Site>) throws -> HTML {
@@ -40,7 +45,7 @@ private struct MyWebsiteHTMLFactory<Site: Website>: HTMLFactory {
                 .header(),
                 .div(.class("intro"),
                      .div(.class("intro-text"),
-                          .h1(.text("Hi there 👋 \n I'm " + index.title)),
+                          .h1(.text("Hi there 👋 \n I'm Josh Prewer")),
                           .div(.id("rectangle")),
                           .h2(.text(context.site.description)),
                           .p("An engineer and musician, looking to collaborate on solving problems with tech, efficiently and pragmatically."),
