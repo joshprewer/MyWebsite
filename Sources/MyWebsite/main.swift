@@ -6,9 +6,7 @@ import Plot
 struct MyWebsite: Website {
     enum SectionID: String, WebsiteSectionID {
         // Add the sections that you want your website to contain here:
-        case projects
-        case blog
-        case about
+        case work
     }
 
     struct ItemMetadata: WebsiteItemMetadata {
@@ -32,8 +30,7 @@ extension Theme where Site == MyWebsite {
 try MyWebsite().publish(using: [
     .copyResources(),
     .generateHTML(withTheme: .MyWebsiteTheme),
-    .generateSiteMap(),
-    .deploy(using: .gitHub("joshprewer.github.io", useSSH: true))
+    .deploy(using: .gitHub("joshprewer/joshprewer.github.io", useSSH: true))
 ])
 
 private struct MyWebsiteHTMLFactory<Site: Website>: HTMLFactory {
@@ -84,29 +81,6 @@ private struct MyWebsiteHTMLFactory<Site: Website>: HTMLFactory {
 private extension Node where Context == HTML.BodyContext {
     static func wrapper(_ nodes: Node...) -> Node {
         .div(.class("wrapper"), .group(nodes))
-    }
-
-    static func header<T: Website>(
-        for context: PublishingContext<T>,
-        selectedSection: T.SectionID?
-    ) -> Node {
-        let sectionIDs = T.SectionID.allCases
-
-        return .header(
-            .wrapper(
-                .if(sectionIDs.count > 1,
-                    .nav(
-                        .ul(.forEach(sectionIDs) { section in
-                            .li(.a(
-                                .class(section == selectedSection ? "selected" : ""),
-                                .href(context.sections[section].path),
-                                .text(context.sections[section].title)
-                                ))
-                            })
-                    )
-                )
-            )
-        )
     }
 
     static func itemList<T: Website>(for items: [Item<T>], on site: T) -> Node {
