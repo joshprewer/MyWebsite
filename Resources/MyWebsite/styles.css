@@ -1,9 +1,3 @@
-/**
-*  Publish Foundation theme
-*  Copyright (c) John Sundell 2019
-*  MIT license, see LICENSE file for details
-*/
-
 * {
     margin: 0;
     padding: 0;
@@ -11,9 +5,9 @@
 }
 
 body {
-    background: #fff;
+    background-color: linear-gradient(111.34deg, rgba(14, 14, 14, 0.76) 0%, #0D0D0D 100%);
     color: #000;
-    font-family: Helvetica, Arial;
+    font-family: Comic-Sans;
     text-align: center;
 }
 
@@ -23,10 +17,6 @@ body {
     margin-right: auto;
     padding: 40px;
     text-align: left;
-}
-
-header {
-    background-color: #eee;
 }
 
 header .wrapper {
@@ -141,25 +131,6 @@ a {
 
 footer {
     color: #8a8a8a;
-}
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #222;
-    }
-
-    body,
-    header .site-name {
-        color: #ddd;
-    }
-
-    .item-list > li {
-        background-color: #333;
-    }
-
-    header {
-        background-color: #000;
-    }
 }
 
 @media(max-width: 600px) {

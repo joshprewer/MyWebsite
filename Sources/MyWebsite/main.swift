@@ -6,7 +6,6 @@ import Plot
 struct MyWebsite: Website {
     enum SectionID: String, WebsiteSectionID {
         // Add the sections that you want your website to contain here:
-        case home
         case projects
         case blog
         case about
@@ -19,18 +18,22 @@ struct MyWebsite: Website {
     // Update these properties to configure your website:
     var url = URL(string: "https://joshprewer.com")!
     var name = "Josh Prewer"
-    var description = "Josh Prewer Software Developer & Designer"
+    var description = "Software Developer & Designer"
     var language: Language { .english }
     var imagePath: Path? { nil }
 }
 
+public extension Theme {
+    static var myWebsiteTheme: Self {
+        Theme(
+            htmlFactory: MyWebsiteHTMLFactory(),
+            resourcePaths: ["Resources/MyWebsite/styles.css"]
+        )
+    }
+}
+
 // This will generate your website using the built-in Foundation theme:
-try MyWebsite().publish(
-    withTheme:Theme(
-        htmlFactory: MyWebsiteHTMLFactory(),
-        resourcePaths: ["Resources/MyWebsite/styles.css"]
-    )
-)
+try MyWebsite().publish(withTheme: .myWebsiteTheme)
 
 private struct MyWebsiteHTMLFactory<Site: Website>: HTMLFactory {
     func makeIndexHTML(for index: Index, context: PublishingContext<Site>) throws -> HTML {
