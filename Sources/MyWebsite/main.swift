@@ -23,17 +23,13 @@ struct MyWebsite: Website {
     var imagePath: Path? { nil }
 }
 
-public extension Theme {
-    static var myWebsiteTheme: Self {
-        Theme(
-            htmlFactory: MyWebsiteHTMLFactory(),
-            resourcePaths: ["Resources/MyWebsite/styles.css"]
-        )
+extension Theme where Site == MyWebsite {
+    static var MyWebsiteTheme: Self {
+        Theme(htmlFactory: MyWebsiteHTMLFactory())
     }
 }
 
-// This will generate your website using the built-in Foundation theme:
-try MyWebsite().publish(withTheme: .myWebsiteTheme)
+try MyWebsite().publish(withTheme: .MyWebsiteTheme)
 
 private struct MyWebsiteHTMLFactory<Site: Website>: HTMLFactory {
     func makeIndexHTML(for index: Index, context: PublishingContext<Site>) throws -> HTML {
@@ -41,23 +37,20 @@ private struct MyWebsiteHTMLFactory<Site: Website>: HTMLFactory {
             .lang(context.site.language),
             .head(for: index, on: context.site),
             .body(
-                .header(for: context, selectedSection: nil),
-                .wrapper(
-                    .h1(.text(index.title)),
-                    .p(
-                        .class("description"),
-                        .text(context.site.description)
+                .header(),
+                .div(.class("intro"),
+                     .div(.class("intro-text"),
+                          .h1(.text("Hi there 👋 \n I'm " + index.title)),
+                          .div(.id("rectangle")),
+                          .h2(.text(context.site.description)),
+                          .p("An engineer and musician, looking to collaborate on solving problems with tech, efficiently and pragmatically."),
+                          .createSocials()
                     ),
-                    .h2("Latest content"),
-                    .itemList(
-                        for: context.allItems(
-                            sortedBy: \.date,
-                            order: .descending
-                        ),
-                        on: context.site
+                     .div(.class("intro-pic"),
+                          .img(.class("intro-pic-blur"), .src(Path("profile.jpg"))),
+                          .img(.class("intro-pic-main"), .src(Path("profile.jpg")))
                     )
-                ),
-                .footer(for: context.site)
+                )
             )
         )
     }
@@ -103,8 +96,8 @@ private extension Node where Context == HTML.BodyContext {
                                 .class(section == selectedSection ? "selected" : ""),
                                 .href(context.sections[section].path),
                                 .text(context.sections[section].title)
-                            ))
-                        })
+                                ))
+                            })
                     )
                 )
             )
@@ -119,10 +112,10 @@ private extension Node where Context == HTML.BodyContext {
                     .h1(.a(
                         .href(item.path),
                         .text(item.title)
-                    )),
+                        )),
                     .tagList(for: item, on: site),
                     .p(.text(item.description))
-                ))
+                    ))
             }
         )
     }
@@ -132,18 +125,22 @@ private extension Node where Context == HTML.BodyContext {
             .li(.a(
                 .href(site.path(for: tag)),
                 .text(tag.string)
-            ))
-        })
+                ))
+            })
+    }
+
+    static func createSocials() -> Node {
+        return .div(.class("social-links"),
+                    .a(.href(Path("https://www.linkedin.com/in/josh-prewer-80ba8b130")), .img(.class("social-btn"), .src(Path("linkedIn.png")))),
+                    .a(.href(Path("https://github.com/joshprewer")), .img(.class("social-btn"), .src(Path("github.png")))),
+                    .a(.href(Path("joshua.prewer@gmail.com")), .img(.class("social-btn"), .src(Path("gmail.png"))))
+        )
     }
 
     static func footer<T: Website>(for site: T) -> Node {
         return .footer(
             .p(
-                .text("Generated using "),
-                .a(
-                    .text("Publish"),
-                    .href("https://github.com/johnsundell/publish")
-                )
+                .text("Generated using ")
             )
         )
     }

@@ -1,0 +1,149 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    height: 80px;
+}
+
+body {
+    background: linear-gradient(111.34deg, rgba(14, 14, 14, 0.76) 0%, #0D0D0D 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: SF Pro Display;
+    text-align: center;
+}
+
+.wrapper {
+    max-width: 900px;
+    margin-left: 130px;
+    margin-right: auto;
+    padding: 40px;
+    text-align: left;
+}
+
+.intro {
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    max-width: 1200px;
+    margin-left: 130px;
+    margin-right: auto;
+    padding: 40px;
+}
+
+.intro-text {
+    text-align: left;
+}
+
+.intro-text h1 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 72px;
+    line-height: 92px;
+    white-space: pre-line;
+    /* or 128% */
+
+    letter-spacing: 0.374px;
+    color: #E7E7E7;
+}
+
+.intro-text h2 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 52px;
+    /* or 108% */
+
+    letter-spacing: 0.7px;
+
+    color: #C7C7C7;
+}
+
+.intro-text p {
+    font-family: SF Pro Text;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    /* or 122% */
+
+    letter-spacing: -0.3px;
+
+    color: #E7E7E7;
+}
+
+.intro-pic {
+    position: relative;
+}
+
+.intro-pic-blur {
+    width: 476px;
+    height: 476px;
+    position:relative;
+    top:0;
+    left:0;
+
+    background: url(profile.jpg);
+    filter: blur(100px);
+    border-radius: 5px;
+}
+
+.intro-pic-main {
+    width: 331px;
+    height: 331px;
+    position:absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: url(profile.png);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 5px;
+}
+
+#rectangle {
+    width: 286px;
+    height: 9px;
+    /* Selected */
+
+    background: #B56866;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+}
+
+.social-btn {
+    width:24px;
+    height:24px;
+    object-fit: contain;
+    margin: 30px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+h2 {
+    margin: 20px 0;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+.content {
+    margin-bottom: 40px;
+}
+
+@media(max-width: 600px) {
+    .wrapper {
+        padding: 40px 20px;
+    }
+}
