@@ -131,9 +131,9 @@ private extension Node where Context == HTML.BodyContext {
 
     static func createSocials() -> Node {
         return .div(.class("social-links"),
-                    .a(.href(Path("https://www.linkedin.com/in/josh-prewer-80ba8b130")), .img(.class("social-btn"), .src(Path("linkedIn.png")))),
-                    .a(.href(Path("https://github.com/joshprewer")), .img(.class("social-btn"), .src(Path("github.png")))),
-                    .a(.href(Path("joshua.prewer@gmail.com")), .img(.class("social-btn"), .src(Path("gmail.png"))))
+                    .a(.href("https://www.linkedin.com/in/josh-prewer-80ba8b130"), .img(.class("social-btn"), .src("linkedIn.png"))),
+                    .a(.href("https://github.com/joshprewer"), .img(.class("social-btn"), .src("github.png"))),
+                    .a(.href("mailto:joshua.prewer@gmail.com"), .img(.class("social-btn"), .src("gmail.png")))
         )
     }
 
