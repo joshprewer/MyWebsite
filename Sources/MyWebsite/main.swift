@@ -46,7 +46,12 @@ private struct MyWebsiteHTMLFactory<Site: Website>: HTMLFactory {
                           .h1("I'm Josh Prewer"),
                           .div(.id("rectangle")),
                           .h2(.text(context.site.description)),
-                          .p("Working at Focusrite as an iOS Developer designing and building the best iOS music apps. Launchpad, Groovebox and Blocs Wave."),
+                          .p("Working at Focusrite as an iOS Developer designing and building the best iOS music apps. ",
+                             .linkedText(text: "Launchpad", link: "https://ampifymusic.com/launchpad/"),
+                             ", ",
+                             .linkedText(text: "Groovebox", link: "https://ampifymusic.com/groovebox/"),
+                             " & ",
+                             .linkedText(text: "Blocs Wave", link: "https://ampifymusic.com/blocswave/")),
                           .p("An engineer and musician, looking to collaborate on solving problems with tech, efficiently and pragmatically."),
                           .createSocials()
                     ),
@@ -116,6 +121,10 @@ private extension Node where Context == HTML.BodyContext {
                     .a(.href("https://github.com/joshprewer"), .img(.class("social-btn"), .src("github.png"))),
                     .a(.href("mailto:joshua.prewer@gmail.com"), .img(.class("social-btn"), .src("gmail.png")))
         )
+    }
+
+    static func linkedText(text: String, link: String) -> Node {
+        return .a(.href(link), .text(text))
     }
 
     static func footer<T: Website>(for site: T) -> Node {

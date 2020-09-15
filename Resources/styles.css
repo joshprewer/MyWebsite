@@ -1,7 +1,6 @@
 * {
     margin: 0;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding: 0;
 }
 
 header {
@@ -13,6 +12,8 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: SF Pro Display, Helvetica, arial, san-serif;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .intro {
@@ -98,12 +99,12 @@ body {
 }
 
 #rectangle {
-    width: 192px;
+    width: 276px;
     height: 9px;
     /* Selected */
 
     padding-left: 5px;
-    background: #B56866;
+    background: #5FAAEF;
 }
 
 .social-links {
@@ -130,6 +131,15 @@ h2 {
 
 p {
     margin-bottom: 20px;
+}
+
+a, a:visited {
+    text-decoration: none;
+    color: #5FAAEF;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 .content {
