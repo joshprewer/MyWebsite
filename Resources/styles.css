@@ -11,7 +11,7 @@ body {
     background: linear-gradient(111.34deg, rgba(14, 14, 14, 0.76) 0%, #0D0D0D 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    font-family: SF Pro Display;
+    font-family: SF Pro Display, Helvetica, arial, san-serif;
 }
 
 .intro {
@@ -22,13 +22,12 @@ body {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding: 0px;
 }
 
 .intro-text {
     margin: 0px;
     text-align: left;
-    max-width: 530px;
+    max-width: 640px;
 }
 
 .intro-text h1 {
