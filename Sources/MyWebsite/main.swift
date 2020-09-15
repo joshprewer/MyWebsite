@@ -45,7 +45,7 @@ private struct MyWebsiteHTMLFactory<Site: Website>: HTMLFactory {
                           .h1(.text("Hi there 👋 \n I'm Josh Prewer")),
                           .div(.id("rectangle")),
                           .h2(.text(context.site.description)),
-                          .p("An engineer and musician, looking to collaborate on solving problems with tech, efficiently and pragmatically."),
+                          .p("Working at Focusrite as an iOS Developer designing and building the best iOS music apps. Launchpad, Groovebox and Blocs Wave.\n \n An engineer and musician, looking to collaborate on solving problems with tech, efficiently and pragmatically."),
                           .createSocials()
                     ),
                      .div(.class("intro-pic"),
