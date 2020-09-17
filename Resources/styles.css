@@ -12,8 +12,8 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     font-family: SF Pro Display, Helvetica, arial, san-serif;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .intro {
@@ -36,7 +36,7 @@ body {
     font-style: normal;
     font-weight: bold;
     font-size: 72px;
-    line-height: 92px;
+    line-height: 70px;
     white-space: pre-line;
 
     letter-spacing: 0.374px;
@@ -47,7 +47,7 @@ body {
     font-style: normal;
     font-weight: 600;
     font-size: 24px;
-    line-height: 52px;
+    line-height: 30px;
 
     letter-spacing: 0.7px;
 
