@@ -40,25 +40,9 @@ private struct MyWebsiteHTMLFactory<Site: Website>: HTMLFactory {
             .head(for: index, on: context.site),
             .body(
                 .header(),
-                .div(.class("intro"),
-                     .div(.class("intro-text"),
-                          .h1("Hi there 👋"),
-                          .h1("I'm Josh Prewer"),
-                          .div(.id("rectangle")),
-                          .h2(.text(context.site.description)),
-                          .p("An engineer and creative, looking to collaborate on solving problems with tech, efficiently and pragmatically."),
-                          .p("Working at Focusrite as an iOS Developer designing and building the best iOS music apps. ",
-                             .linkedText(text: "Launchpad", link: "https://ampifymusic.com/launchpad/"),
-                             ", ",
-                             .linkedText(text: "Groovebox", link: "https://ampifymusic.com/groovebox/"),
-                             " & ",
-                             .linkedText(text: "Blocs Wave", link: "https://ampifymusic.com/blocswave/")),
-                          .createSocials()
-                    ),
-                     .div(.class("intro-pic"),
-                          .img(.class("intro-pic-blur"), .src(Path("profile.jpg"))),
-                          .img(.class("intro-pic-main"), .src(Path("profile.jpg")))
-                    )
+                .div(.class("wrapper"),
+                     .introSection(),
+                     .workSection()
                 )
             )
         )
@@ -115,6 +99,57 @@ private extension Node where Context == HTML.BodyContext {
             })
     }
 
+    static func footer<T: Website>(for site: T) -> Node {
+        return .footer(
+            .p(
+                .text("Generated using ")
+            )
+        )
+    }
+    static func introSection() -> Node {
+        return .div(.class("intro"),
+                    .div(.class("intro-text"),
+                         .h1("Hi there 👋"),
+                         .h1("I'm Josh"),
+                         .div(.id("rectangle")),
+                         .h2("Software Developer & Designer"),
+                         .p("An engineer and creative, looking to collaborate on solving problems with tech, efficiently and pragmatically."),
+                         .p("Working at Focusrite as an iOS Developer designing and building the best iOS music apps. ",
+                            .linkedText(text: "Launchpad", link: "https://ampifymusic.com/launchpad/"),
+                            ", ",
+                            .linkedText(text: "Groovebox", link: "https://ampifymusic.com/groovebox/"),
+                            " & ",
+                            .linkedText(text: "Blocs Wave", link: "https://ampifymusic.com/blocswave/")),
+                         .createSocials()
+                   ),
+                    .div(.class("intro-pic"),
+                         .img(.class("intro-pic-blur"), .src(Path("profile.jpg"))),
+                         .img(.class("intro-pic-main"), .src(Path("profile.jpg")))
+                   )
+               )
+    }
+
+    static func workSection() -> Node {
+        return .div(.class("work"),
+                    .h1("Work"),
+                    .div(.class("work-cards"),
+                         .workCard(colour: "lp", imagePath: "lp-ss.png", iconImagePath: "lp-icon.png", text: "Launchpad"),
+                         .workCard(colour: "gb", imagePath: "gb-ss.png", iconImagePath: "gb-icon.png", text: "Groovebox"),
+                         .workCard(colour: "bw", imagePath: "bw-ss.png", iconImagePath: "bw-icon.png", text: "Blocs Wave")
+                    )
+        )
+    }
+
+    static func workCard(colour: String, imagePath: String, iconImagePath: String, text:String) -> Node {
+        return .div(.class("card"),
+                    .img(.class("card-image"), .src(imagePath)),
+                    .div(.class("card-text  \(colour)"),
+                         .h2(.text(text)),
+                         .img(.class("card-icon"), .src(iconImagePath))
+                    )
+                )
+    }
+
     static func createSocials() -> Node {
         return .div(.class("social-links"),
                     .a(.href("https://www.linkedin.com/in/josh-prewer-80ba8b130"), .img(.class("social-btn"), .src("linkedIn.png"))),
@@ -125,13 +160,5 @@ private extension Node where Context == HTML.BodyContext {
 
     static func linkedText(text: String, link: String) -> Node {
         return .a(.href(link), .text(text))
-    }
-
-    static func footer<T: Website>(for site: T) -> Node {
-        return .footer(
-            .p(
-                .text("Generated using ")
-            )
-        )
     }
 }
