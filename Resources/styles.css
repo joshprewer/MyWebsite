@@ -63,9 +63,9 @@ p {
 
 .intro {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
+    margin-bottom: 100px;
 }
 
 .intro-text {
@@ -74,18 +74,21 @@ p {
     max-width: 500px;
 }
 
+.intro-text a:hover {
+    text-decoration: underline;
+}
+
 .intro-pic {
     margin: 0px;
-    position: relative;
     max-width: 530px;
 }
 
 .intro-pic-blur {
     width: 476px;
     height: 476px;
-    position:relative;
-    top:0;
-    left:0;
+    position:absolute;
+    margin-left: auto;
+    margin-right: auto;
 
     background: url(profile.jpg);
     filter: blur(100px);
@@ -93,12 +96,10 @@ p {
 }
 
 .intro-pic-main {
-    width: 331px;
-    height: 331px;
-    position:absolute;
-    top:50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 70%;
 
     background: url(profile.png);
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -129,16 +130,20 @@ p {
     margin: 30px;
 }
 
+.work {
+    margin-bottom: 50px;
+}
+
 .work-cards {
     display: flex;
     flex-direction: row;
 }
 
 .card {
-    height: 360px;
-
     background: #333333;
     border-radius: 10px;
+
+    max-width: 600px;
 
     margin: 12px;
 
@@ -146,6 +151,11 @@ p {
 
     display: flex;
     flex-direction: column;
+    transition: .4s ease;
+}
+
+.card:hover {
+    transform: scale(1.025);
 }
 
 .card-image {
@@ -187,16 +197,21 @@ a, a:visited {
     color: #5FAAEF;
 }
 
-a:hover {
-    text-decoration: underline;
-}
-
 .content {
     margin-bottom: 40px;
 }
 
-@media(max-width: 600px) {
+@media(max-width: 700px) {
     .wrapper {
         padding: 40px 20px;
+    }
+
+    .intro {
+        justify-content: center;
+        flex-direction: column
+    }
+
+    .work-cards {
+        flex-direction: column
     }
 }
