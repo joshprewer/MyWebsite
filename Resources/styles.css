@@ -58,7 +58,7 @@ p {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-    padding: 30px 40px 0px 40px;
+    padding: 30px 120px 0px 120px;
 }
 
 .intro {
@@ -124,8 +124,14 @@ p {
 .social-btn {
     width:24px;
     height:24px;
+    padding: 30px;
+
+    transition: .4s ease;
     object-fit: contain;
-    margin: 30px;
+}
+
+.social-btn:hover {
+    transform: scale(1.2);
 }
 
 .work {
