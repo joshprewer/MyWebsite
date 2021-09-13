@@ -114,7 +114,11 @@ private extension Node where Context == HTML.BodyContext {
                          .div(.id("rectangle")),
                          .h2("Software Developer & Designer"),
                          .p("An engineer and creative, looking to collaborate on solving problems with tech, efficiently and pragmatically."),
-                         .p("Working at Focusrite as an iOS Developer designing and building the best iOS music apps. ",
+                         .p(
+                            "Working at ",
+                            .linkedText(text: "Curve", link: "https://www.curve.com/en-gb/"),
+                            " as an iOS Engineer building a new way for people to spend, see and save money. ",
+                            "Previously at Focusrite designing and building the best iOS music apps. ",
                             .linkedText(text: "Launchpad", link: "https://ampifymusic.com/launchpad/"),
                             ", ",
                             .linkedText(text: "Groovebox", link: "https://ampifymusic.com/groovebox/"),
