@@ -16,7 +16,7 @@ struct MyWebsite: Website {
     // Update these properties to configure your website:
     var url = URL(string: "https://joshprewer.com")!
     var name = "Josh Prewer"
-    var description = "Software Developer & Designer"
+    var description = "Software Engineer"
     var language: Language { .english }
     var imagePath: Path? { nil }
 }
@@ -112,13 +112,15 @@ private extension Node where Context == HTML.BodyContext {
                          .h1("Hi there 👋"),
                          .h1("I'm Josh"),
                          .div(.id("rectangle")),
-                         .h2("Software Developer & Designer"),
+                         .h2("Software Engineer"),
                          .p("An engineer and creative, looking to collaborate on solving problems with tech, efficiently and pragmatically."),
                          .p(
                             "Working at ",
+                            .linkedText(text: "Depop", link: "https://www.depop.com/"),
+                            " as an iOS Engineer building a circular fashion marketplace. ",
+                            "Previously at ",
                             .linkedText(text: "Curve", link: "https://www.curve.com/en-gb/"),
-                            " as an iOS Engineer building a new way for people to spend, see and save money. ",
-                            "Previously at Focusrite designing and building the best iOS music apps. ",
+                            " and Focusrite designing and building the best iOS music apps: ",
                             .linkedText(text: "Launchpad", link: "https://ampifymusic.com/launchpad/"),
                             ", ",
                             .linkedText(text: "Groovebox", link: "https://ampifymusic.com/groovebox/"),
@@ -131,48 +133,6 @@ private extension Node where Context == HTML.BodyContext {
                          .img(.class("intro-pic-main"), .src(Path("profile.jpg")))
                    )
                )
-    }
-
-    static func workSection() -> Node {
-        return .div(.class("work"),
-                    .h1("Work"),
-                    .div(.class("work-cards"),
-                         .workCard(
-                            link: "https://ampifymusic.com/launchpad/",
-                            colour: "lp",
-                            imagePath: "lp-ss.png",
-                            iconImagePath: "lp-icon.png",
-                            text: "Launchpad"),
-                         .workCard(
-                            link: "https://ampifymusic.com/groovebox/",
-                            colour: "gb",
-                            imagePath: "gb-ss.png",
-                            iconImagePath: "gb-icon.png",
-                            text: "Groovebox"),
-                         .workCard(
-                            link: "https://ampifymusic.com/blocswave/",
-                            colour: "bw",
-                            imagePath: "bw-ss.png",
-                            iconImagePath: "bw-icon.png",
-                            text: "Blocs Wave")
-                    )
-        )
-    }
-
-    static func workCard(link: String,
-                         colour: String,
-                         imagePath: String,
-                         iconImagePath: String,
-                         text:String) -> Node {
-        return .a(.href(link),
-                  .div(.class("card"),
-                       .img(.class("card-image"), .src(imagePath)),
-                       .div(.class("card-text  \(colour)"),
-                            .h2(.text(text)),
-                            .img(.class("card-icon"), .src(iconImagePath))
-                       )
-                  )
-            )
     }
 
     static func createSocials() -> Node {
